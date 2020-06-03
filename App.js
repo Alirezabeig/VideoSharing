@@ -6,22 +6,31 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Photo Clicker!</Text>
+      <Text>all opinions</Text>
     </View>
   );
 }
 
-function SettingsScreen() {
+function AddPostScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
       <TouchableOpacity>
-      <Text> Yeap </Text>
+      <Text> Add Post </Text>
       </TouchableOpacity>
 
     </View>
   );
 }
+
+function ProfileScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Profile</Text>
+    </View>
+  );
+}
+
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +39,8 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Add Post" component={AddPostScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
