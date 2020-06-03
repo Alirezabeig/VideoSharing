@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {Component} from 'react';
 import { Text, View, Button, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -33,8 +33,19 @@ function Tabs (){
           <MaterialCommunityIcons name="plus" color={color} size={size} />
         ),
       }}  />
+
+
+      <Tab.Screen
+        name="AddPost"
+        component={AddPost}
+        options={{
+        tabBarLabel: 'AddPost',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="plus" color={color} size={size} />
+        ),
+      }}  />
     </Tab.Navigator>
-  
+
   )
 }
 
