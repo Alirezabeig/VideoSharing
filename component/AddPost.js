@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import AddContent from '../actions/index';
 
 class AddPost extends Component {
 
@@ -14,6 +15,15 @@ class AddPost extends Component {
     });
   }
 
+handlePost = () => {
+  this.AddContent();
+  this.setState({
+    title:"",
+    content:"",
+  })
+
+
+}
      render(){
        const {title, content, height} = this.state
 
@@ -46,6 +56,7 @@ class AddPost extends Component {
 
       <TouchableOpacity
       style={styles.submit}
+      onPress={()=>this.handlePost}
       >
       <Text>Submit</Text>
       </TouchableOpacity>
