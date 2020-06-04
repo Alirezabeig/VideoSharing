@@ -6,7 +6,7 @@ class Home extends Component {
     return (
 
             <View>
-            <Text>Home</Text>
+            <Text>Homes</Text>
             </View>
     )
   }
