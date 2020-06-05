@@ -12,6 +12,7 @@ import {Provider, connect} from 'react-redux';
 //import reducer from './reducers';
 import ReduxThunk from 'redux-thunk'
 import {createStore, applyMiddleware} from 'redux';
+import reducer from './reducers';
 
 
 
@@ -59,13 +60,15 @@ const Stack = createStackNavigator();
 
 export default class App extends Component {
   render (){
+    const store = createStore(reducer, {}, applyMiddleware(ReduxThunk))
     return (
-
+      <Provider store={store}>
           <NavigationContainer >
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={Tabs}/>
             </Stack.Navigator>
           </NavigationContainer>
+      </Provider>
 
       );
 

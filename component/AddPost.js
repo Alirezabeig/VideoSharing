@@ -1,14 +1,27 @@
 import React, {Component} from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import AddContent from '../actions/index';
+import {connect} from 'react-redux';
+import { generateId } from '../utils/helpers'
 
 class AddPost extends Component {
 
   state = {
-    title:'',
-    content:'',
+    content:"",
     height: 40
   }
+
+    _PostObj =() => ({
+      id: generateId(),
+      content: this.state.content,
+    })
+
+    handleInputChange = content => {
+      this.setState(() => ({
+        content
+        }));
+ };
+
   updateSize = (height) => {
     this.setState({
       height
@@ -16,12 +29,13 @@ class AddPost extends Component {
   }
 
 handlePost = () => {
-  this.AddContent();
-  this.setState({
-    title:"",
-    content:"",
-  })
+  post= this._PostObj();
+  this.props.AddContent(post.id, post.content);
+  this.props.navigation.navigate("Home");
 
+  this.setState(() => ({
+content: ""
+}));
 
 }
      render(){
@@ -34,20 +48,14 @@ handlePost = () => {
 
       <View>
 
-      <TextInput
-        style={styles.titleBox}
-        lable= 'title'
-        placeholder = "Enter the title"
-        onChangeText={title => this.setState({title})}
-        value={title}
-        />
+
 
       <TextInput
         style={styles.postcontent}
         //style={[newStyle]}
         lable= 'conent'
         placeholder = "Content"
-        onChangeText={content => this.setState({content})}
+        onChangeText = {this.handleInputChange}
         value={content}
         editable={true}
         multiline={true}
@@ -56,7 +64,7 @@ handlePost = () => {
 
       <TouchableOpacity
       style={styles.submit}
-      onPress={()=>this.handlePost}
+      onPress={this.handlePost}
       >
       <Text>Submit</Text>
       </TouchableOpacity>
@@ -66,7 +74,14 @@ handlePost = () => {
     )
   }
 }
-export default AddPost;
+
+const mapDispatchToProps = dispatch => ({
+  AddContent: (id, content) => dispatch(AddContent(id, content))
+});
+
+export default connect(
+  null, mapDispatchToProps
+)(AddPost);
 
 const styles= StyleSheet.create({
 
