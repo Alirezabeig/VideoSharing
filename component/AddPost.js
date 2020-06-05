@@ -7,76 +7,63 @@ import { generateId } from '../utils/helpers'
 class AddPost extends Component {
 
   state = {
-    content:"",
-    height: 40
-  }
+    content:'',
+  };
 
-    _PostObj =() => ({
-      id: generateId(),
-      content: this.state.content,
-    })
+ _PostObj = () => ({
+     id: generateId(),
+     content: this.state.content,
+   });
 
-    handleInputChange = content => {
-      this.setState(() => ({
-        content
-        }));
+   handleInputChange = content => {
+     this.setState(() => ({
+       content
+    }));
  };
 
-  updateSize = (height) => {
-    this.setState({
-      height
-    });
-  }
-
 handlePost = () => {
-  post= this._PostObj();
-  this.props.AddContent(post.id, post.content);
-  this.props.navigation.navigate("Home");
+  Post= this._PostObj();
+  console.log("\npost =>", Post);
+  //this.props.AddContent();
+  // this.props.navigation.navigate("Home");
 
-  this.setState(() => ({
-content: ""
-}));
+    this.setState(() => ({
+      content: ""
+    }));
+   }
 
-}
-     render(){
-       const {title, content, height} = this.state
+  render(){
 
-       let newStyle = {
-      height
-    }
     return (
 
       <View>
 
+          <TextInput
+            style={styles.postcontent}
+            //style={[newStyle]}
 
+            placeholder = "Content"
+            onChangeText = {this.handleInputChange}
+            value={this.state.content}
+            //editable={true}
+            //multiline={true}
+            //onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.height)}
+          />
 
-      <TextInput
-        style={styles.postcontent}
-        //style={[newStyle]}
-        lable= 'conent'
-        placeholder = "Content"
-        onChangeText = {this.handleInputChange}
-        value={content}
-        editable={true}
-        multiline={true}
-        //onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.height)}
-      />
-
-      <TouchableOpacity
-      style={styles.submit}
-      onPress={this.handlePost}
-      >
-      <Text>Submit</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.submit}
+          onPress={this.handlePost}
+          >
+          <Text>Submit</Text>
+        </TouchableOpacity>
 
       </View>
-
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  AddContent: (id, content) => dispatch(AddContent(id, content))
+  AddContent: (id, word) => dispatch(AddContent(id, word))
 });
 
 export default connect(
