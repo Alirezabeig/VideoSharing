@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import AddContent from '../actions/index';
+import {addContent} from '../actions/index';
 import {connect} from 'react-redux';
 import { generateId } from '../utils/helpers'
 
@@ -23,9 +23,9 @@ class AddPost extends Component {
 
 handlePost = () => {
   Post= this._PostObj();
-  console.log("\npost =>", Post);
-  //this.props.AddContent();
-  // this.props.navigation.navigate("Home");
+  console.log("\nposts =>", Post);
+  this.props.addContent(Post.id, Post.content);
+  this.props.navigation.navigate("Home");
 
     this.setState(() => ({
       content: ""
@@ -63,7 +63,7 @@ handlePost = () => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  AddContent: (id, word) => dispatch(AddContent(id, word))
+  addContent: (id, words) => dispatch(addContent(id, words))
 });
 
 export default connect(

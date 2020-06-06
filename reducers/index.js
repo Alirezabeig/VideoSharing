@@ -1,16 +1,12 @@
 
 import {ADD_CONTENT, FETCH_CONTENT} from '../actions/index';
 
-//
-// const init= {
-//   post:{
-//     content:'',
-//     }
-// }
+const init= {}
 
 const reducer = (state=init, action) => {
 
   switch (action.type) {
+
     case FETCH_CONTENT: {
       console.log("\nAll posts- Reducer =>",state)
       return {

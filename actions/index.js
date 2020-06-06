@@ -2,14 +2,11 @@
 export const ADD_CONTENT = 'ADD_CONTENT';
 export const FETCH_CONTENT = 'FETCH_CONTENT'
 
-export const AddContent = (id, content)=> {
-  console.log("ADD content- actions");
-  return {
+export const addContent = (id, content)=> ({
    type: 'ADD_CONTENT',
     id,
-    content,
-  }
-};
+    content
+});
 
 
 export const receiveContent = (post)=> {
