@@ -8,7 +8,7 @@ const reducer = (state = init, action) => {
   switch (action.type) {
 
     case FETCH_CONTENT: {
-      console.log("\nAll posts- =>",state)
+      console.log("\nFetch-posts Reducer- =>",state)
       return {
     ...state,
     ...actions.posts
