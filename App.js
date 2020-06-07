@@ -6,6 +6,7 @@ import { RNCamera, FaceDetector } from 'react-native-camera';
 import AddPost from './component/AddPost';
 import Home from './component/Home';
 import Profile from './component/Profile';
+import PostList from './component/PostList';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStackNavigator} from '@react-navigation/stack';
 import {Provider, connect} from 'react-redux';
@@ -32,10 +33,10 @@ function Tabs (){
       }} />
 
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="Posts"
+        component={PostList}
         options={{
-        tabBarLabel: 'Profile',
+        tabBarLabel: 'Post',
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="plus" color={color} size={size} />
         ),

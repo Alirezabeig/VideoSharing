@@ -9,10 +9,10 @@ export const addContent = (id, content)=> ({
 });
 
 
-export const receiveContent = (post)=> {
-  console.log("content");
+export const receiveContent = (posts)=> {
+  console.log("content =>",posts);
   return {
    type:'FETCH_CONTENT',
-  post,
+  posts,
   }
 };

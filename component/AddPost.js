@@ -22,10 +22,10 @@ class AddPost extends Component {
  };
 
 handlePost = () => {
-  Post= this._PostObj();
-  console.log("\nposts =>", Post);
-  this.props.addContent(Post.id, Post.content);
-  this.props.navigation.navigate("Home");
+  post= this._PostObj();
+  console.log("\n File: Addpost.js =>", post);
+  this.props.addContent(post.id, post.content);
+  this.props.navigation.navigate("Home", post);
 
     this.setState(() => ({
       content: ""
