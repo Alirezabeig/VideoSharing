@@ -13,7 +13,7 @@ class PostList extends Component {
 
   render(){
 
-    const {posts} = this.props;
+    const { posts } = this.props;
     console.log("\n PostsList.js :Posts =>", posts);
 
 
